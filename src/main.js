@@ -29,15 +29,20 @@ new Vue({
             data() {
                 return {
                     genres,
-                }
+                };
             },
             components: {
                 'check-filter': {
-                    template: `<div class="check-filter">
-                                   <span class="checkbox"></span>
+                    template: `<div v-bind:class="{ 'check-filter': true, 'active': checked }">
+                                   <span class="checkbox" v-on:click="checked = !checked"></span>
                                    <span class="check-filter-title">{{ title }}</span>
                                </div>`,
                     props: [ 'title' ],
+                    data() {
+                        return {
+                            checked: false,
+                        };
+                    },
                 },
             },
         },
