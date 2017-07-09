@@ -12,7 +12,7 @@
         computed: {
             filteredMovies() {
                 if (this.genre.length > 0) {
-                    return this.movies.filter(movie => this.genre.some(genere => genere === movie.genre));
+                    return this.movies.filter(movie => this.genre.some(genre => movie.movie.Genre.match(genre)));
                 }
                 return this.movies;
             },
