@@ -3,8 +3,12 @@ import MovieList from './components/MovieList.vue';
 import MovieFilter from './components/MovieFilter.vue';
 import Vue from 'vue';
 import VueResource from 'vue-resource';
+import moment from 'moment-timezone';
 
 Vue.use(VueResource);
+
+moment.tz.setDefault("UTC");
+Object.defineProperty(Vue.prototype, '$moment', { get: () => moment });
 
 new Vue({
     el: '#app',
