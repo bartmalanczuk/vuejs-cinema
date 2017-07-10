@@ -1,7 +1,11 @@
 <template>
     <div id="movie-list">
         <div v-if="filteredMovies.length">
-            <movie-item v-bind:movie="movie.movie" v-bind:sessions="movie.sessions" v-for="movie in filteredMovies"></movie-item>
+            <movie-item v-bind:movie="movie.movie"
+                        v-bind:sessions="movie.sessions"
+                        v-bind:day="day"
+                        v-for="movie in filteredMovies"
+            ></movie-item>
         </div>
         <div class="no-results" v-else-if="movies.length">
             No results.
@@ -16,7 +20,7 @@
     import MovieItem from './MovieItem.vue';
 
     export default {
-        props: [ 'movies', 'genre', 'time', ],
+        props: [ 'movies', 'genre', 'time', 'day' ],
         computed: {
             filteredMovies() {
                 if (this.genre.length > 0) {
