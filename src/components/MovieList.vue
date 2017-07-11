@@ -8,7 +8,7 @@
             ></movie-item>
         </div>
         <div class="no-results" v-else-if="movies.length">
-            No results.
+            No results for {{ appliedFiletrsString }}.
         </div>
         <div class="no-results" v-else>
             Loading...
@@ -29,6 +29,9 @@
                 }).filter((movie) => {
                     return this.getSessionsForDayAndTime(movie.sessions, this.day, this.time).length > 0;
                 });
+            },
+            appliedFiletrsString() {
+                return this.time.concat(this.genre).join(', ');
             },
         },
         components: {
