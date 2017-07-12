@@ -3,7 +3,6 @@
         <div v-if="filteredMovies.length">
             <movie-item v-bind:movie="movie.movie"
                         v-bind:sessions="getSessionsForDayAndTime(movie.sessions)"
-                        v-bind:day="day"
                         v-for="movie in filteredMovies"
             ></movie-item>
         </div>
