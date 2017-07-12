@@ -5,7 +5,9 @@
         </div>
         <div class="movie-col-right">
             <div class="movie-title">
-                <h2>{{ movie.Title }}</h2>
+                <router-link v-bind:to="{ name: 'movie' }">
+                    <h2>{{ movie.Title }}</h2>
+                </router-link>
                 <div class="movie-rating">{{ movie.Rated }}</div>
             </div>
             <div class="movie-sessions">
