@@ -2,6 +2,10 @@
     <div id="day-select">
         <ul class="days">
             <li v-for="day in days" v-bind:class="{ 'day': true, 'active': isDaySelected(day) }" v-on:click="selectDay(day)">{{ formatDay(day) }}</li>
+            <li class="day-selector">
+                <span class="dec" v-on:click="selectDayRelative(-1)"></span>
+                <span class="inc" v-on:click="selectDayRelative(1)"></span>
+            </li>
         </ul>
     </div>
 </template>
@@ -22,6 +26,12 @@
             },
             selectDay(day) {
                 this.$emit('change-day', day);
+            },
+            selectDayRelative(difference) {
+                const newDay = this.$moment(this.day).add(difference, 'days');
+                if (this.days.some(day => newDay.isSame(day, 'days'))) {
+                    this.$emit('change-day', newDay);
+                }
             },
             isDaySelected(day) {
                 return day.isSame(this.day, 'days');
