@@ -4,7 +4,7 @@
             <movie-item v-bind:movie="movie.movie" v-for="movie in filteredMovies">
                 <div class="movie-sessions">
                     <div class="session-time-wrapper" v-for="session in getSessionsForDayAndTime(movie.sessions)">
-                        <div class="session-time">{{ formatSessionTime(session.time) }}</div>
+                        <div class="session-time" v-tooltip="`Seats available ${session.seats}`">{{ formatSessionTime(session.time) }}</div>
                     </div>
                 </div>
             </movie-item>
